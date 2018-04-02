@@ -1,0 +1,14 @@
+<?import javafx.scene.layout.GridPane?>
+
+<?import java.net.URL?>
+
+<GridPane fx:id="editorPane" fx:controller="EditorView.EditorViewController"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+
+    <fx:include source="FiguresPalette/figures-palette.fxml"/>
+    <fx:include source="Canvas/canvas.fxml"/>
+
+    <stylesheets>
+        <URL value="@editor-view.css"></URL>
+    </stylesheets>
+</GridPane>

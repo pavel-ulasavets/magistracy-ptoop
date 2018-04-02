@@ -1,0 +1,9 @@
+
+#editorPane {
+}
+
+#figuresPalette {
+    -fx-width: 50px;
+    -fx-height: 100px;
+    -fx-background-color: red;
+}
