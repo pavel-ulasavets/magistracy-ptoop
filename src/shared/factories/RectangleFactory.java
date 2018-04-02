@@ -5,7 +5,7 @@ import shared.DrawingTransactionByMouse;
 import shared.primitives.*;
 
 public class RectangleFactory extends GeometricFigureFactory {
-    public GeometricFigure2D createFigure(DrawingTransactionByMouse transaction) {
+    public GeometricFigure2D createFigure(DrawingTransactionByMouse transaction) throws Exception {
         MouseEvent startEvent = transaction.getStartEvent();
         MouseEvent endEvent = transaction.getEndEvent();
 

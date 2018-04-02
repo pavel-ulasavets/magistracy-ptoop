@@ -3,28 +3,43 @@ package shared.primitives;
 
 import shared.visitors.IVisitor;
 
+import java.awt.*;
+
 public class Rectangle extends GeometricFigure2D {
     private Point2D topLeft;
     private Point2D bottomRight;
 
 
-    public Rectangle(Point2D topLeft, Point2D bottomRight) {
-        if (topLeft.getX() >= bottomRight.getX()) {
-            throw new Error("topLeft.x can not be >= than bottomRight.x ");
+    // ------------- private methods -------------
+
+    private boolean validatePoints(Point2D topLeft, Point2D bottomRight) {
+        boolean areXsEqual = topLeft.getX() == bottomRight.getX();
+        boolean areYsEqual = topLeft.getY() == bottomRight.getY();
+
+
+        return !(areXsEqual || areYsEqual);
+    }
+
+
+    // ------------ public methods --------------
+
+    public Rectangle(Point2D topLeft, Point2D bottomRight) throws Exception {
+        if (validatePoints(topLeft, bottomRight)) {
+            this.topLeft = topLeft;
+            this.bottomRight = bottomRight;
+        } else {
+            throw new Exception("a Rectangle can not have both points with either equal Xs or equal Ys");
         }
+    }
 
-        if (topLeft.getY() >=  bottomRight.getY()) {
-            throw new Error("topLeft.y can not be >= than bottomRight.y");
-        }
-
-
-        this.topLeft = topLeft;
-        this.bottomRight = bottomRight;
+    public Rectangle() throws Exception {
+        this(new Point2D(0, 0), new Point2D(10, 10));
     }
 
     public int getWidth() {
         return this.bottomRight.getDistance(this.topLeft).getX();
     }
+
 
     public int getHeight() {
         return this.bottomRight.getDistance(this.topLeft).getY();
@@ -36,6 +51,24 @@ public class Rectangle extends GeometricFigure2D {
 
     public Point2D getBottomRight() {
         return this.bottomRight.clone();
+    }
+
+    public void setTopLeft(Point2D p) throws Exception {
+        if (validatePoints(p, this.bottomRight)) {
+            this.topLeft = p;
+            return;
+        }
+
+        throw new Exception("a Rectangle can not have both points with either equal Xs or equal Ys");
+    }
+
+    public void setBottomRight(Point2D p) throws Exception {
+        if (validatePoints(this.topLeft, p)) {
+            this.bottomRight = p;
+            return;
+        }
+
+        throw new Exception("a Rectangle can not have both points with either equal Xs or equal Ys");
     }
 
 

@@ -7,6 +7,10 @@ public class Circle extends GeometricFigure2D {
     private Point2D center;
     private int radius;
 
+    public Circle() {
+        super();
+    }
+
     public Circle(Point2D center, int radius) {
         if (radius <= 0) {
             throw new Error("radius should be a positive number");
@@ -27,6 +31,14 @@ public class Circle extends GeometricFigure2D {
 
     public int getRadius() {
         return this.radius;
+    }
+
+    public void setCenter(Point2D p) {
+        this.center = p;
+    }
+
+    public void setRadius(int radius) {
+        this.radius = radius;
     }
 
     @Override

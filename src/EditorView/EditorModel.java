@@ -39,7 +39,30 @@ public class EditorModel extends Observable implements IVisitable {
      * an active figure factory
      */
     public void createFigureByTransaction(DrawingTransactionByMouse transaction) {
-        this.figures.add(this.activeFigureFactory.createFigure(transaction));
+        try {
+            this.figures.add(this.activeFigureFactory.createFigure(transaction));
+            this.sendMessage();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    /**
+     * returns the whole list of figures available in the model
+     */
+    public VisitableArrayList<GeometricFigure2D> getFigures() {
+        return this.figures;
+    }
+
+    /**
+     * sets a provided list of figures as rendered one and sends a notification
+     * to observer that a the model has been changed
+     *
+     * @param figures
+     */
+    public void setFigures(VisitableArrayList<GeometricFigure2D> figures) {
+        this.figures = figures;
         this.sendMessage();
     }
 

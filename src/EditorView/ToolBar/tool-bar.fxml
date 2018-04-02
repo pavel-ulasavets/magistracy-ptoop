@@ -3,6 +3,8 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.Group?>
+
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:id="toolBar"
@@ -11,7 +13,11 @@
       styleClass="editor-section"
     >
 
-    <Label>Figures Palette</Label>
-    <VBox styleClass="palette-buttons-container" fx:id="paletteButtonsContainer" spacing="10">
+    <Label styleClass="toolbar-label">Canvas Tool Bar</Label>
+    <VBox styleClass="canvas-buttons-container" fx:id="canvasButtonsContainer" spacing="10">
+    </VBox>
+
+    <Label styleClass="toolbar-label">Project Tool Bar</Label>
+    <VBox styleClass="project-buttons-container" fx:id="projectButtonsContainer" spacing="10">
     </VBox>
 </VBox>

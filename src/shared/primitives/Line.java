@@ -3,28 +3,32 @@ package shared.primitives;
 import shared.visitors.IVisitor;
 
 public class Line extends GeometricFigure2D {
-    private Point2D a;
-    private Point2D b;
+    private Point2D startPoint;
+    private Point2D endPoint;
+
+    public Line() {
+        super();
+    }
 
     public Line(Point2D a, Point2D b) {
         if (a.equals(b)) {
             throw new Error("Point a should be different than point b");
         }
 
-        this.a = a;
-        this.b = b;
+        this.startPoint = a;
+        this.endPoint = b;
     }
 
     public boolean contains(Point2D p) {
-        int deltaX = b.getX() - a.getX();
-        int deltaY =  b.getY() - a.getY();
+        int deltaX = endPoint.getX() - startPoint.getX();
+        int deltaY =  endPoint.getY() - startPoint.getY();
 
-        return (p.getX() - a.getX()) * deltaY == ((p.getY() - a.getY()) * deltaX);
+        return (p.getX() - startPoint.getX()) * deltaY == ((p.getY() - startPoint.getY()) * deltaX);
     }
 
     public void move(Distance2D d) {
-        this.a.move(d);
-        this.b.move(d);
+        this.startPoint.move(d);
+        this.endPoint.move(d);
     }
 
     @Override
@@ -33,11 +37,19 @@ public class Line extends GeometricFigure2D {
     }
 
     public Point2D getStartPoint() {
-        return this.a.clone();
+        return this.startPoint;
+    }
+
+    public void setStartPoint(Point2D p) {
+        this.startPoint = p;
     }
 
     public Point2D getEndPoint() {
-        return this.b.clone();
+        return this.endPoint;
+    }
+
+    public void setEndPoint(Point2D p) {
+        this.endPoint = p;
     }
 
     public void accept(IVisitor v) {
@@ -45,9 +57,9 @@ public class Line extends GeometricFigure2D {
     }
 
     public String toString() {
-        int deltaX = b.getX() - a.getX();
-        int deltaY =  b.getY() - a.getY();
+        int deltaX = endPoint.getX() - startPoint.getX();
+        int deltaY =  endPoint.getY() - startPoint.getY();
 
-        return "(x - " + a.getX() + ") / " + deltaX + " = " + "(y - " + a.getY() + ") / " + deltaY;
+        return "(x - " + startPoint.getX() + ") / " + deltaX + " = " + "(y - " + startPoint.getY() + ") / " + deltaY;
     }
 }
