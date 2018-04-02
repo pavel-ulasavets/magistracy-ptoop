@@ -8,6 +8,10 @@ import shared.collections.*;
 import shared.visitors.IVisitable;
 import shared.visitors.IVisitor;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class EditorModel implements IVisitable {
 
     private VisitableArrayList<GeometricFigure2D> figures;
@@ -23,16 +27,22 @@ public class EditorModel implements IVisitable {
         this.figures.add(this.activeFigureFactory.createFigure(transaction));
     }
 
+    public void setActiveFigureFactory(GeometricFigureFactory factory) {
+        this.activeFigureFactory = factory;
+    }
+
+    public HashMap<String, GeometricFigureFactory> getFactories() {
+        HashMap<String, GeometricFigureFactory> factoriesMap = new HashMap<>();
+
+        factoriesMap.put("Circle", new CircleFactory());
+        factoriesMap.put("Line", new LineFactory());
+        factoriesMap.put("Rectangle", new RectangleFactory());
+
+        return factoriesMap;
+    }
+
     public void accept(IVisitor v) {
         this.figures.accept(v);
-    }
-
-    public void clear() {
-        this.figures.clear();
-    }
-
-    public void removeAllSelected() {
-        // TODO: to be implemented
     }
 
 }

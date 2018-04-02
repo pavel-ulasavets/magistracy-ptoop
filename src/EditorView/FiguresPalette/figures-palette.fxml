@@ -13,9 +13,6 @@
     >
 
     <Label>Figures Palette</Label>
-    <VBox styleClass="palette-buttons-container" spacing="10">
-        <Button styleClass="palette-button" prefWidth="150" fx:id="circleFigureActivator">Circle</Button>
-        <Button styleClass="palette-button" prefWidth="150" fx:id="rectangleFigureActivator">Rectangle</Button>
-        <Button styleClass="palette-button" prefWidth="150" fx:id="lineFigureActivator">Line</Button>
+    <VBox styleClass="palette-buttons-container" fx:id="paletteButtonsContainer" spacing="10">
     </VBox>
 </VBox>
