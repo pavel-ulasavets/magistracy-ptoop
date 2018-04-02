@@ -9,8 +9,11 @@ import javafx.scene.input.MouseEvent;
 import shared.DrawingTransactionByMouse;
 import shared.visitors.DrawingVisitor;
 
+import java.util.Observable;
+import java.util.Observer;
 
-public class CanvasController {
+
+public class CanvasController implements Observer {
     private EditorModel model;
     private DrawingTransactionByMouse transaction = null;
     private DrawingVisitor drawingVisitor = null;
@@ -27,6 +30,7 @@ public class CanvasController {
 
     public void setModel(EditorModel model) {
         this.model = model;
+        this.model.addObserver(this);
     }
 
     public void onCanvasMousePressed(MouseEvent event) {
@@ -38,11 +42,8 @@ public class CanvasController {
     public void onCanvasMouseReleased(MouseEvent event) {
         if (this.transaction != null) {
             this.transaction.close(event);
-            this.model.addFigure(this.transaction);
+            this.model.createFigureByTransaction(this.transaction);
             this.transaction = null;
-
-            this.gc.clearRect(0, 0, 1280, 720);
-            this.model.accept(this.drawingVisitor);
         }
     }
 
@@ -50,4 +51,9 @@ public class CanvasController {
 
     }
 
+    @Override
+    public void update(Observable o, Object arg) {
+        this.gc.clearRect(0, 0, 1280, 720);
+        this.model.accept(this.drawingVisitor);
+    }
 }

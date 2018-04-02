@@ -21,53 +21,44 @@ public class FiguresPaletteController {
 
     // ----------- private methods
 
-    private Button createButton(String name, GeometricFigureFactory factory) {
+    private Button createButton(String name, EventHandler<? super MouseEvent> handler) {
         EditorModel model = this.model;
         Button paletteButton = new Button(name);
 
         paletteButton.getStyleClass().add("palette-button");
         paletteButton.setPrefWidth(150);
-
-        EventHandler<? super MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                model.setActiveFigureFactory(factory);
-            }
-        };
-        paletteButton.setOnMousePressed(eventHandler);
+        paletteButton.setOnMousePressed(handler);
 
         return paletteButton;
     }
 
-    private void intializeButtons() {
+    private void createButtons() {
         if (this.model == null) {
             return;
         }
 
+        // create palette buttons
+
         HashMap<String, GeometricFigureFactory> factories = this.model.getFactories();
 
         for (String key: factories.keySet()) {
-            this.paletteButtonsContainer.getChildren().add(this.createButton(key, factories.get(key)));
+            GeometricFigureFactory factory = factories.get(key);
+            EventHandler<? super MouseEvent> eventHandler = (EventHandler<MouseEvent>) event -> model.setActiveFigureFactory(factory);
+            this.paletteButtonsContainer.getChildren().add(this.createButton(key, eventHandler));
         }
+
+        // create clear canvas button
+
+        EventHandler<? super MouseEvent> eventHandler = (EventHandler<MouseEvent>) event -> model.clearAll();
+        this.paletteButtonsContainer.getChildren().add(this.createButton("Clear Canvas", eventHandler));
 
     }
 
     // ----------- public methods ---------------------
 
-    @FXML
-    public void initialize() {
-        this.intializeButtons();
-    }
-
     public void setModel(EditorModel model) {
         this.model = model;
-        this.intializeButtons();
+        this.createButtons();
     }
 
-
-    // ---------- event handlers --------------
-
-    public void onMousePressed(MouseEvent e) {
-        System.out.println("on button clicked.");
-    }
 }

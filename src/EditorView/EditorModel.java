@@ -8,14 +8,25 @@ import shared.collections.*;
 import shared.visitors.IVisitable;
 import shared.visitors.IVisitor;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.Observable;
 
-public class EditorModel implements IVisitable {
+public class EditorModel extends Observable implements IVisitable {
+
+    // ----------- private properties ----------------
 
     private VisitableArrayList<GeometricFigure2D> figures;
     private GeometricFigureFactory activeFigureFactory;
+
+    // ----------- private methods -------------------
+
+    private void sendMessage() {
+        this.setChanged();
+        this.notifyObservers();
+    }
+
+
+    // ----------- public methods --------------------
 
 
     public EditorModel() {
@@ -23,14 +34,41 @@ public class EditorModel implements IVisitable {
         this.activeFigureFactory = new LineFactory();
     }
 
-    public void addFigure(DrawingTransactionByMouse transaction) {
+    /**
+     * creates a figure by a given mouse transaction using
+     * an active figure factory
+     */
+    public void createFigureByTransaction(DrawingTransactionByMouse transaction) {
         this.figures.add(this.activeFigureFactory.createFigure(transaction));
+        this.sendMessage();
     }
 
+    /**
+     * accept an operation provided by a given visitor for the whole collection of figures
+     */
+    public void accept(IVisitor v) {
+        this.figures.accept(v);
+    }
+
+    /**
+     * clears the list of existing figures
+     */
+    public void clearAll() {
+        this.figures.clear();
+        this.sendMessage();
+    }
+
+    /**
+     * changes an active factory to one specified
+     */
     public void setActiveFigureFactory(GeometricFigureFactory factory) {
         this.activeFigureFactory = factory;
     }
 
+    /**
+     * builds the list of factories supported in the system
+     * TODO: think of capability to move this code outside
+     */
     public HashMap<String, GeometricFigureFactory> getFactories() {
         HashMap<String, GeometricFigureFactory> factoriesMap = new HashMap<>();
 
@@ -39,10 +77,6 @@ public class EditorModel implements IVisitable {
         factoriesMap.put("Rectangle", new RectangleFactory());
 
         return factoriesMap;
-    }
-
-    public void accept(IVisitor v) {
-        this.figures.accept(v);
     }
 
 }

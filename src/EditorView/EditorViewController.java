@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 public class EditorViewController {
     private EditorModel model;
 
-
     @FXML
     private CanvasController editorCanvasController = null;
 
