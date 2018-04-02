@@ -1,4 +1,4 @@
-package EditorView.FiguresPalette;
+package EditorView.ToolBar;
 
 import EditorView.EditorModel;
 
@@ -11,7 +11,7 @@ import shared.factories.GeometricFigureFactory;
 
 import java.util.HashMap;
 
-public class FiguresPaletteController {
+public class ToolBarController {
 
     private EditorModel model = null;
 

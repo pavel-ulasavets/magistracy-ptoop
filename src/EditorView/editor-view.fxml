@@ -8,7 +8,7 @@
 
     <HBox maxWidth="1280" maxHeight="720" alignment="TOP_LEFT">
         <children>
-            <fx:include fx:id="figuresPalette" source="FiguresPalette/figures-palette.fxml"/>
+            <fx:include fx:id="toolBar" source="ToolBar/tool-bar.fxml"/>
             <fx:include fx:id="editorCanvas" source="Canvas/canvas.fxml"/>
         </children>
     </HBox>
