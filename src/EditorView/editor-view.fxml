@@ -2,11 +2,16 @@
 
 <?import java.net.URL?>
 
+<?import javafx.scene.layout.HBox?>
 <GridPane fx:id="editorPane" fx:controller="EditorView.EditorViewController"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+          xmlns:fx="http://javafx.com/fxml" alignment="TOP_LEFT" hgap="10" vgap="10">
 
-    <fx:include source="FiguresPalette/figures-palette.fxml"/>
-    <fx:include source="Canvas/canvas.fxml"/>
+    <HBox maxWidth="1280" maxHeight="720" alignment="TOP_LEFT">
+        <children>
+            <fx:include fx:id="figuresPalette" source="FiguresPalette/figures-palette.fxml"/>
+            <fx:include fx:id="editorCanvas" source="Canvas/canvas.fxml"/>
+        </children>
+    </HBox>
 
     <stylesheets>
         <URL value="@editor-view.css"></URL>

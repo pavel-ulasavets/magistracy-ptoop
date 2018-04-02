@@ -1,21 +1,25 @@
 package EditorView;
 
+import EditorView.Canvas.CanvasController;
+import EditorView.FiguresPalette.FiguresPaletteController;
 import javafx.fxml.FXML;
-import javafx.scene.layout.GridPane;
-import shared.DrawingTransactionByMouse;
-import shared.visitors.DrawingVisitor;
 
 
 public class EditorViewController {
     private EditorModel model;
-    private DrawingTransactionByMouse transaction = null;
-    private DrawingVisitor drawingVisitor = null;
+
 
     @FXML
-    private GridPane editorPane;
+    private CanvasController editorCanvasController = null;
 
-    public EditorViewController() {
+    @FXML
+    private FiguresPaletteController figuresPaletteController = null;
+
+    @FXML
+    public void initialize() {
         this.model = new EditorModel();
-    }
 
+        this.editorCanvasController.setModel(this.model);
+        this.figuresPaletteController.setModel(this.model);
+    }
 }

@@ -13,6 +13,7 @@ public class EditorModel implements IVisitable {
     private VisitableArrayList<GeometricFigure2D> figures;
     private GeometricFigureFactory activeFigureFactory;
 
+
     public EditorModel() {
         this.figures = new VisitableArrayList<>();
         this.activeFigureFactory = new LineFactory();

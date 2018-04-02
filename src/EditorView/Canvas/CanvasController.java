@@ -25,10 +25,9 @@ public class CanvasController {
         this.drawingVisitor = new DrawingVisitor(this.gc);
     }
 
-    public CanvasController() {
-        this.model = new EditorModel();
+    public void setModel(EditorModel model) {
+        this.model = model;
     }
-
 
     public void onCanvasMousePressed(MouseEvent event) {
         if (this.transaction == null) {
@@ -47,7 +46,7 @@ public class CanvasController {
         }
     }
 
-    public void onCanvasrMouseMoved(MouseEvent event) {
+    public void onCanvasMouseMoved(MouseEvent event) {
 
     }
 

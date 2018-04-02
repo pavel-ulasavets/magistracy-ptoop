@@ -1,9 +1,20 @@
 
-#editorPane {
-}
-
 #figuresPalette {
     -fx-width: 50px;
     -fx-height: 100px;
-    -fx-background-color: red;
+    -fx-border-color: #C0C0C0;
+    -fx-border-style: solid;
+    -fx-border-width: 0 2px 0 0;
+}
+
+.palette-button {
+    -fx-padding: 10px 30px;
+}
+
+.editor-section {
+    -fx-padding: 10px;
+}
+
+.palette-buttons-container {
+    -fx-padding: 10px 0 10px 0;
 }

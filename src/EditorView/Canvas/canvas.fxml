@@ -8,8 +8,14 @@
 
 <?import javafx.scene.canvas.Canvas?>
 
-<Canvas xmlns:fx="http://javafx.com/fxml" fx:id="editorCanvas" fx:controller="EditorView.Canvas.CanvasController" width="1280" height="720"
-        onMousePressed="#onCanvasMousePressed"
-        onMouseMoved="#onCanvasrMouseMoved"
-        onMouseReleased="#onCanvasMouseReleased"></Canvas>
+<VBox styleClass="editor-section" xmlns:fx="http://javafx.com/fxml"  fx:controller="EditorView.Canvas.CanvasController">
+    <Label>Painting Canvas</Label>
+    <Canvas fx:id="editorCanvas"  width="1080" height="720"
+             onMousePressed="#onCanvasMousePressed"
+             onMouseMoved="#onCanvasMouseMoved"
+             onMouseReleased="#onCanvasMouseReleased"></Canvas>
+</VBox>
+
+
+
 

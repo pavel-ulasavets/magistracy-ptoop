@@ -3,10 +3,19 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.control.Button?>
-<GridPane xmlns="http://javafx.com/javafx"
-          xmlns:fx="http://javafx.com/fxml"
-          fx:id="figuresPalette"
-          fx:controller="EditorView.FiguresPalette.FiguresPalette"
-          maxWidth="200" maxHeight="400">
+<?import javafx.scene.control.Label?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:id="figuresPalette"
+      fx:controller="EditorView.FiguresPalette.FiguresPaletteController"
+      maxWidth="200"
+      styleClass="editor-section"
+    >
 
-</GridPane>
+    <Label>Figures Palette</Label>
+    <VBox styleClass="palette-buttons-container" spacing="10">
+        <Button styleClass="palette-button" prefWidth="150" fx:id="circleFigureActivator">Circle</Button>
+        <Button styleClass="palette-button" prefWidth="150" fx:id="rectangleFigureActivator">Rectangle</Button>
+        <Button styleClass="palette-button" prefWidth="150" fx:id="lineFigureActivator">Line</Button>
+    </VBox>
+</VBox>

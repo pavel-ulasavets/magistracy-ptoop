@@ -9,6 +9,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("EditorView/editor-view.fxml"));
+        primaryStage.setResizable(true);
         primaryStage.setTitle("The simplest graphics editor");
         primaryStage.setScene(new Scene(root, 1280, 720));
         primaryStage.show();
