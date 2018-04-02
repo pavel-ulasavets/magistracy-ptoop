@@ -8,6 +8,7 @@ import shared.primitives.Point2D;
 
 
 public class CircleFactory extends GeometricFigureFactory {
+
     public GeometricFigure2D createFigure(DrawingTransactionByMouse transaction) {
         MouseEvent startEvent = transaction.getStartEvent();
         MouseEvent endEvent = transaction.getEndEvent();

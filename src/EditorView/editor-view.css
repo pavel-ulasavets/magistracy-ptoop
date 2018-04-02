@@ -15,7 +15,7 @@
     -fx-padding: 10px;
 }
 
-.canvas-buttons-container, .project-buttons-container {
+.primitives-container, .canvas-buttons-container, .project-buttons-container {
     -fx-padding: 10px 0 10px 0;
 }
 

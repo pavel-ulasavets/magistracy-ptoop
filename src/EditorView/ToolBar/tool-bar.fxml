@@ -3,7 +3,6 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.Group?>
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
@@ -13,7 +12,11 @@
       styleClass="editor-section"
     >
 
-    <Label styleClass="toolbar-label">Canvas Tool Bar</Label>
+    <Label styleClass="toolbar-label">Primitives</Label>
+    <VBox styleClass="primitives-container" fx:id="primitivesContainer" spacing="10">
+    </VBox>
+
+    <Label styleClass="toolbar-label">Primitives</Label>
     <VBox styleClass="canvas-buttons-container" fx:id="canvasButtonsContainer" spacing="10">
     </VBox>
 

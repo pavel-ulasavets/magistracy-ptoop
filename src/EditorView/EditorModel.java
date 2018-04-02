@@ -31,7 +31,7 @@ public class EditorModel extends Observable implements IVisitable {
 
     public EditorModel() {
         this.figures = new VisitableArrayList<>();
-        this.activeFigureFactory = new LineFactory();
+        this.activeFigureFactory = this.getFactories().get("Line");
     }
 
     /**
@@ -46,6 +46,14 @@ public class EditorModel extends Observable implements IVisitable {
             System.out.println(e.getMessage());
         }
 
+    }
+
+    /**
+     * returns currently active geometric figure factory
+     *
+     */
+    public GeometricFigureFactory getActiveFigureFactory() {
+        return this.activeFigureFactory;
     }
 
     /**
