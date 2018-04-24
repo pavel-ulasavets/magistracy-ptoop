@@ -7,4 +7,5 @@ At the moment it supports the following features:
 - clearing of a canvas
 - exporting/importing pics to/from XML file
 
-![Image](https://monosnap.com/file/E4zgndjdJ9SSibuvy62VV2j087jr0u "The editor appearance")
+
+![the editor appearance](https://monosnap.com/image/E4zgndjdJ9SSibuvy62VV2j087jr0u.png)
